@@ -11,18 +11,20 @@ def cargar_csv(archivo, columnas):
     if not os.path.exists(archivo): return pd.DataFrame(columns=columnas)
     return pd.read_csv(archivo)
 
-def registrar_usuario(username, password, nombre, celular, email):
-    df = cargar_csv('usuarios.csv', ['username', 'password', 'nombre', 'celular', 'email'])
+def registrar_usuario(username, nombre, celular, email):
+    # Ajustado a las columnas reales de tu CSV
+    df = cargar_csv('usuarios.csv', ['username', 'name', 'phone', 'email'])
     if username in df['username'].values: return False, "Usuario existente"
-    nuevo = pd.DataFrame([{'username': username, 'password': password, 'nombre': nombre, 'celular': celular, 'email': email}])
+    nuevo = pd.DataFrame([{'username': username, 'name': nombre, 'phone': celular, 'email': email}])
     df = pd.concat([df, nuevo], ignore_index=True)
     df.to_csv('usuarios.csv', index=False)
     return True, "Registro exitoso"
 
-def validar_login(username, password):
-    df = cargar_csv('usuarios.csv', ['username', 'password', 'nombre', 'celular', 'email'])
+def validar_login(username):
+    # Login basado solo en usuario (no hay contraseñas en el CSV)
+    df = cargar_csv('usuarios.csv', ['username', 'name', 'phone', 'email'])
     user = df[df['username'] == username]
-    return not user.empty and user.iloc[0]['password'] == password
+    return not user.empty
 
 def guardar_prediccion(username, index, gl, gv, res):
     df = cargar_csv('predicciones.csv', ['username', 'index', 'gl', 'gv', 'res'])
@@ -31,9 +33,8 @@ def guardar_prediccion(username, index, gl, gv, res):
     df = pd.concat([df, nueva], ignore_index=True)
     df.to_csv('predicciones.csv', index=False)
 
-# --- LÓGICA DE BANDERAS (ACTUALIZADA) ---
+# --- LÓGICA DE BANDERAS ---
 def get_flag_url(pais):
-    # Diccionario completo con las banderas que faltaban (Nigeria, Corea del Sur, etc)
     codes = {
         "mexico":"mx", "sudafrica":"za", "japon":"jp", "brasil":"br", "francia":"fr", 
         "argentina":"ar", "espana":"es", "inglaterra":"gb-eng", "portugal":"pt", 
@@ -54,6 +55,13 @@ def actualizar_resultado(index, local, visitante):
     elif gv > gl: st.session_state[f"res_{index}"] = f"Gana {visitante}"
     else: st.session_state[f"res_{index}"] = "Empate"
 
+# --- INTERFAZ PRINCIPAL ---
+st.title("⚽ Mis Predicciones")
+
+# --- CONTADOR DE USUARIOS ---
+df_users = cargar_csv('usuarios.csv', ['username', 'name', 'phone', 'email'])
+st.metric(label="Total de participantes registrados", value=len(df_users))
+
 # --- SIDEBAR: LOGIN / REGISTRO ---
 if 'current_user' not in st.session_state: st.session_state.current_user = None
 
@@ -61,40 +69,44 @@ with st.sidebar:
     st.header("🔐 Acceso")
     if not st.session_state.current_user:
         modo = st.radio("Acción", ["Iniciar Sesión", "Registrarse"])
-        u_in = st.text_input("Usuario*")
-        p_in = st.text_input("Contraseña*", type="password")
         
         if modo == "Registrarse":
-            n_in = st.text_input("Nombre completo*")
-            c_in = st.text_input("Teléfono")
-            e_in = st.text_input("Correo")
-            if st.button("Registrar"):
-                if u_in and p_in and n_in:
-                    ok, msg = registrar_usuario(u_in, p_in, n_in, c_in, e_in)
-                    if ok: st.success(msg)
-                    else: st.error(msg)
-                else: st.error("Completa campos con *")
-        else:
+            # Formulario con limpieza automática
+            with st.form("registro_form", clear_on_submit=True):
+                u_in = st.text_input("Usuario*")
+                n_in = st.text_input("Nombre completo*")
+                c_in = st.text_input("Teléfono")
+                e_in = st.text_input("Correo")
+                
+                if st.form_submit_button("Registrar"):
+                    if u_in and n_in:
+                        ok, msg = registrar_usuario(u_in, n_in, c_in, e_in)
+                        if ok: 
+                            st.success(msg)
+                            st.rerun()
+                        else: st.error(msg)
+                    else: st.error("Completa usuario y nombre")
+        
+        else: # Iniciar Sesión
+            u_in = st.text_input("Usuario")
             if st.button("Entrar"):
-                if validar_login(u_in, p_in):
+                if validar_login(u_in):
                     st.session_state.current_user = u_in
                     st.rerun()
-                else: st.error("Credenciales incorrectas")
+                else: st.error("Usuario no encontrado")
     else:
         st.success(f"Hola, {st.session_state.current_user}")
         if st.button("Cerrar Sesión"):
             st.session_state.current_user = None
             st.rerun()
 
-# --- INTERFAZ PRINCIPAL ---
-st.title("⚽ Mis Predicciones")
+# --- TABLA DE PARTIDOS ---
 tab1, tab2, tab3 = st.tabs(["⚽ Predicciones", "🏆 Ranking", "🔐 Admin"])
 
 with tab1:
     if os.path.exists('partidos.csv'):
         df = pd.read_csv('partidos.csv')
         
-        # Botón Guardar Todo
         if st.button("💾 GUARDAR TODAS MIS PREDICCIONES", type="primary", use_container_width=True):
             if st.session_state.current_user:
                 for i in range(len(df)):
@@ -103,7 +115,6 @@ with tab1:
             else:
                 st.warning("⚠️ Debes iniciar sesión para guardar.")
 
-        # Listado de partidos
         for i, row in df.iterrows():
             if f"res_{i}" not in st.session_state: st.session_state[f"res_{i}"] = "Empate"
             with st.container(border=True):
@@ -113,7 +124,6 @@ with tab1:
                     f1, f2 = st.columns(2)
                     flag_l = get_flag_url(row['Local'])
                     flag_v = get_flag_url(row['Visitante'])
-                    # Renderizado de Banderas
                     if flag_l: f1.image(flag_l, width=40)
                     if flag_v: f2.image(flag_v, width=40)
                 with c2:
