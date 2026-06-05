@@ -1,0 +1,93 @@
+Partido,Fecha,Grupo,Local,Visitante,Sede
+1,2026-06-11,A,Mexico,Sudafrica,Estadio Azteca
+2,2026-06-11,A,Japon,Nigeria,Estadio Guadalajara
+3,2026-06-12,B,Brasil,Corea del Sur,SoFi Stadium
+4,2026-06-12,B,Francia,Australia,MetLife Stadium
+5,2026-06-12,C,EEUU,Suiza,Lincoln Financial Field
+6,2026-06-12,C,Marruecos,Colombia,Gillette Stadium
+7,2026-06-13,D,Argentina,Iran,Hard Rock Stadium
+8,2026-06-13,D,Espana,Ecuador,AT&T Stadium
+9,2026-06-13,E,Inglaterra,Costa Rica,MetLife Stadium
+10,2026-06-13,E,Portugal,Corea del Norte,Levi's Stadium
+11,2026-06-14,F,Alemania,Marruecos,BC Place
+12,2026-06-14,F,Uruguay,Polonia,BMO Field
+13,2026-06-14,G,Belgica,Senegal,NRG Stadium
+14,2026-06-14,G,Italia,Chile,Mercedes-Benz Stadium
+15,2026-06-15,H,Paises Bajos,Arabia Saudita,Estadio Azteca
+16,2026-06-15,H,Croacia,Canada,BC Place
+17,2026-06-16,I,Ganador Grupo A,Ganador Grupo B,MetLife Stadium
+18,2026-06-16,I,Ganador Grupo C,Ganador Grupo D,Gillette Stadium
+19,2026-06-17,J,Ganador Grupo E,Ganador Grupo F,Levi's Stadium
+20,2026-06-17,J,Ganador Grupo G,Ganador Grupo H,BC Place
+21,2026-06-18,K,Ganador Grupo A,Ganador Grupo C,NRG Stadium
+22,2026-06-18,K,Ganador Grupo B,Ganador Grupo D,Mercedes-Benz Stadium
+23,2026-06-19,L,Ganador Grupo E,Ganador Grupo G,Estadio Azteca
+24,2026-06-19,L,Ganador Grupo F,Ganador Grupo H,Estadio Guadalajara
+25,2026-06-20,A,Mexico,Japon,Estadio Azteca
+26,2026-06-20,A,Sudafrica,Nigeria,Estadio Guadalajara
+27,2026-06-21,B,Brasil,Francia,SoFi Stadium
+28,2026-06-21,B,Corea del Sur,Australia,MetLife Stadium
+29,2026-06-22,C,EEUU,Marruecos,Gillette Stadium
+30,2026-06-22,C,Suiza,Colombia,Lincoln Financial Field
+31,2026-06-23,D,Argentina,Espana,AT&T Stadium
+32,2026-06-23,D,Iran,Ecuador,Hard Rock Stadium
+33,2026-06-24,E,Inglaterra,Portugal,MetLife Stadium
+34,2026-06-24,E,Costa Rica,Corea del Norte,Levi's Stadium
+35,2026-06-25,F,Alemania,Uruguay,BC Place
+36,2026-06-25,F,Marruecos,Polonia,BMO Field
+37,2026-06-26,G,Belgica,Italia,Mercedes-Benz Stadium
+38,2026-06-26,G,Senegal,Chile,NRG Stadium
+39,2026-06-27,H,Paises Bajos,Croacia,Estadio Azteca
+40,2026-06-27,H,Arabia Saudita,Canada,BC Place
+41,2026-06-28,I,Ganador Grupo A,Ganador Grupo E,MetLife Stadium
+42,2026-06-28,I,Ganador Grupo B,Ganador Grupo F,Gillette Stadium
+43,2026-06-29,J,Ganador Grupo C,Ganador Grupo G,Levi's Stadium
+44,2026-06-29,J,Ganador Grupo D,Ganador Grupo H,BC Place
+45,2026-06-30,K,Ganador Grupo A,Ganador Grupo F,NRG Stadium
+46,2026-06-30,K,Ganador Grupo B,Ganador Grupo E,Mercedes-Benz Stadium
+47,2026-07-01,L,Ganador Grupo C,Ganador Grupo H,Estadio Azteca
+48,2026-07-01,L,Ganador Grupo D,Ganador Grupo G,Estadio Guadalajara
+49,2026-07-02,A,Mexico,Nigeria,Estadio Azteca
+50,2026-07-02,A,Sudafrica,Japon,Estadio Guadalajara
+51,2026-07-03,B,Brasil,Australia,SoFi Stadium
+52,2026-07-03,B,Corea del Sur,Francia,MetLife Stadium
+53,2026-07-04,C,EEUU,Colombia,Gillette Stadium
+54,2026-07-04,C,Suiza,Marruecos,Lincoln Financial Field
+55,2026-07-05,D,Argentina,Ecuador,AT&T Stadium
+56,2026-07-05,D,Iran,Espana,Hard Rock Stadium
+57,2026-07-06,E,Inglaterra,Corea del Norte,MetLife Stadium
+58,2026-07-06,E,Portugal,Costa Rica,Levi's Stadium
+59,2026-07-07,F,Alemania,Polonia,BC Place
+60,2026-07-07,F,Marruecos,Uruguay,BMO Field
+61,2026-07-08,G,Belgica,Chile,Mercedes-Benz Stadium
+62,2026-07-08,G,Senegal,Italia,NRG Stadium
+63,2026-07-09,H,Paises Bajos,Canada,Estadio Azteca
+64,2026-07-09,H,Arabia Saudita,Croacia,BC Place
+65,2026-07-10,I,Ganador Grupo A,Ganador Grupo G,MetLife Stadium
+66,2026-07-10,I,Ganador Grupo B,Ganador Grupo H,Gillette Stadium
+67,2026-07-11,J,Ganador Grupo C,Ganador Grupo E,Levi's Stadium
+68,2026-07-11,J,Ganador Grupo D,Ganador Grupo F,BC Place
+69,2026-07-12,K,Ganador Grupo A,Ganador Grupo H,NRG Stadium
+70,2026-07-12,K,Ganador Grupo B,Ganador Grupo G,Mercedes-Benz Stadium
+71,2026-07-13,L,Ganador Grupo C,Ganador Grupo F,Estadio Azteca
+72,2026-07-13,L,Ganador Grupo D,Ganador Grupo E,Estadio Guadalajara
+73,2026-07-15,R32,Ganador 1,Ganador 2,Estadio Azteca
+74,2026-07-16,R32,Ganador 3,Ganador 4,SoFi Stadium
+75,2026-07-17,R32,Ganador 5,Ganador 6,Gillette Stadium
+76,2026-07-18,R32,Ganador 7,Ganador 8,AT&T Stadium
+77,2026-07-19,R32,Ganador 9,Ganador 10,MetLife Stadium
+78,2026-07-20,R32,Ganador 11,Ganador 12,BC Place
+79,2026-07-21,R32,Ganador 13,Ganador 14,NRG Stadium
+80,2026-07-22,R32,Ganador 15,Ganador 16,Mercedes-Benz Stadium
+81,2026-07-23,R16,Ganador M1,Ganador M2,Estadio Azteca
+82,2026-07-24,R16,Ganador M3,Ganador M4,SoFi Stadium
+83,2026-07-25,R16,Ganador M5,Ganador M6,Gillette Stadium
+84,2026-07-26,R16,Ganador M7,Ganador M8,AT&T Stadium
+85,2026-07-27,QF,Ganador M9,Ganador M10,MetLife Stadium
+86,2026-07-28,QF,Ganador M11,Ganador M12,BC Place
+87,2026-07-29,QF,Ganador M13,Ganador M14,NRG Stadium
+88,2026-07-30,QF,Ganador M15,Ganador M16,Mercedes-Benz Stadium
+89,2026-08-01,SF,Ganador QF1,Ganador QF2,Estadio Azteca
+90,2026-08-02,SF,Ganador QF3,Ganador QF4,SoFi Stadium
+91,2026-08-04,Bronce,Perdedor SF1,Perdedor SF2,Hard Rock Stadium
+92,2026-08-05,Final,Ganador SF1,Ganador SF2,MetLife Stadium
